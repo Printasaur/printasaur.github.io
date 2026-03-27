@@ -16,7 +16,7 @@
         body { 
             background-color: var(--dark-bg); 
             color: white; 
-            font-family: 'Inter', -apple-system, sans-serif; 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             margin: 0; 
             display: flex; 
             flex-direction: column;
@@ -25,7 +25,7 @@
             padding: 20px;
         }
 
-        /* Navigācija */
+        /* Navigācijas josla */
         .nav-bar {
             width: 100%;
             max-width: 1000px;
@@ -53,7 +53,7 @@
         .nav-btn:hover { border-color: var(--main-green); color: var(--main-green); }
         .nav-btn.active { border-color: var(--main-green); color: var(--main-green); background: rgba(154, 205, 50, 0.1); }
 
-        /* Konteiners */
+        /* Galvenais rāmis */
         .container {
             max-width: 1000px;
             width: 100%;
@@ -65,66 +65,87 @@
         }
 
         .header-section { text-align: center; margin-bottom: 40px; }
-        h1 { color: var(--main-green); font-size: 2.5rem; text-transform: uppercase; margin: 0; }
-        .subtitle { color: #666; margin-top: 10px; }
+        h1 { color: var(--main-green); font-size: 2.5rem; text-transform: uppercase; margin: 0; letter-spacing: -1px; }
+        .subtitle { color: #666; margin-top: 10px; font-size: 1.1rem; }
 
         /* Produktu režģis */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 25px;
         }
 
         .product-card {
             background: #161616;
-            border-radius: 20px;
+            border-radius: 24px;
             padding: 20px;
             border: 1px solid var(--border-color);
-            transition: 0.3s;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-align: center;
+            position: relative;
         }
 
-        .product-card:hover { border-color: var(--main-green); transform: translateY(-5px); }
+        .product-card:hover { 
+            border-color: var(--main-green); 
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
 
         .product-img {
             width: 100%;
-            height: 220px;
-            background-color: #222;
+            height: 250px;
+            background-color: #0d0d0d;
             background-size: cover;
             background-position: center;
-            border-radius: 15px;
-            margin-bottom: 15px;
+            background-repeat: no-repeat;
+            border-radius: 18px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
         }
 
-        .product-title { font-size: 1.2rem; font-weight: 700; margin: 10px 0; color: #fff; }
-        .price { color: var(--main-green); font-size: 1.4rem; font-weight: 800; margin-bottom: 20px; }
+        /* Fallback teksts, ja bilde nav ielādēta */
+        .img-fallback {
+            font-size: 3rem;
+            opacity: 0.3;
+        }
+
+        .product-title { font-size: 1.3rem; font-weight: 700; margin: 10px 0; color: #fff; }
+        .price { color: var(--main-green); font-size: 1.5rem; font-weight: 800; margin-bottom: 25px; display: block; }
 
         .wa-order-btn {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             background: var(--wa-green);
             color: white;
             text-decoration: none;
-            padding: 12px;
-            border-radius: 12px;
+            padding: 14px;
+            border-radius: 14px;
             font-weight: 700;
+            font-size: 1rem;
             transition: 0.3s;
         }
 
-        .wa-order-btn:hover { background: #20ba5a; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
+        .wa-order-btn:hover { 
+            background: #20ba5a; 
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); 
+        }
 
-        @media (max-width: 600px) {
-            .nav-bar { flex-direction: column; gap: 15px; }
-            .container { padding: 20px; }
+        @media (max-width: 850px) {
+            .nav-bar { flex-direction: column; gap: 15px; text-align: center; }
+            .container { padding: 30px 20px; }
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
 <div class="nav-bar">
-    <div style="font-weight: 800; font-size: 1.2rem; color: var(--main-green);">PRINTASAUR</div>
+    <div style="font-weight: 900; font-size: 1.4rem; color: var(--main-green); letter-spacing: 1px;">PRINTASAUR</div>
     <div class="nav-links">
         <a href="index.html" class="nav-btn">Idea Lab</a>
         <a href="kolekcija.html" class="nav-btn active">Kolekcija</a>
@@ -133,28 +154,30 @@
 
 <div class="container">
     <div class="header-section">
-        <h1>Kolekcija</h1>
-        <p class="subtitle">Izvēlies dizainu un pasūti caur WhatsApp</p>
+        <h1>Mūsu Kolekcija</h1>
+        <p class="subtitle">Personalizēti 3D printēti risinājumi</p>
     </div>
     
     <div class="grid">
         <div class="product-card">
-            <div class="product-img" style="background-image: url('csdd.jpg');"></div>
+            <div class="product-img" style="background-image: url('csdd.jpg');">
+                <span class="img-fallback">🚗</span>
+            </div>
             <div class="product-title">CSDD TA Piekariņš</div>
-            <div class="price">5.00 €</div>
+            <span class="price">5.00 €</span>
             <a href="https://wa.me/37129629421?text=Sveiki!%20Vēlos%20pasūtīt%20CSDD%20TA%20piekariņu." class="wa-order-btn" target="_blank">
                 Pasūtīt WhatsApp
             </a>
         </div>
 
         <div class="product-card">
-            <div class="product-img">
-                <span style="font-size: 3.5rem;">🦖</span>
+            <div class="product-img" style="background-image: url('spec.jpg');">
+                <span class="img-fallback">🦖</span>
             </div>
             <div class="product-title">Tavs specpasūtījums</div>
-            <div class="price">No 7.00 €</div>
-            <a href="https://wa.me/37129629421?text=Sveiki!%20Vēlos%20jautāt%20par%20individuālu%203D%20printēšanu." class="wa-order-btn" target="_blank">
-                Jautāt par cenu
+            <span class="price">Cena pēc vienošanās</span>
+            <a href="https://wa.me/37129629421?text=Sveiki!%20Vēlos%20jautāt%20par%20individuālu%203D%20printēšanas%20projektu." class="wa-order-btn" target="_blank">
+                Sazināties par cenu
             </a>
         </div>
     </div>
