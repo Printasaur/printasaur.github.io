@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Printasaur | Kolekcija 🦖</title>
     <style>
-        :root { --main-green: #9ACD32; --dark-bg: #0a0a0a; --card-bg: #111111; --border-color: #222; }
+        :root { 
+            --main-green: #9ACD32; 
+            --dark-bg: #0a0a0a; 
+            --card-bg: #111111; 
+            --border-color: #222;
+            --wa-green: #25D366;
+        }
         
         body { 
             background-color: var(--dark-bg); 
@@ -19,23 +25,24 @@
             padding: 20px;
         }
 
+        /* Navigācija */
         .nav-bar {
             width: 100%;
             max-width: 1000px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             padding: 10px 0;
         }
 
-        .nav-links { display: flex; gap: 15px; }
+        .nav-links { display: flex; gap: 12px; }
 
         .nav-btn {
             background: #1a1a1a;
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 10px 18px;
             border-radius: 12px;
             font-size: 0.9rem;
             font-weight: 600;
@@ -43,9 +50,13 @@
             transition: 0.3s;
         }
 
-        .nav-btn:hover { background: var(--main-green); color: black; border-color: var(--main-green); }
+        .nav-btn:hover { border-color: var(--main-green); color: var(--main-green); }
         .nav-btn.active { border-color: var(--main-green); color: var(--main-green); background: rgba(154, 205, 50, 0.1); }
+        
+        .nav-wa { background: var(--wa-green); border: none; color: white; }
+        .nav-wa:hover { background: #20ba5a; color: white; transform: translateY(-2px); }
 
+        /* Galvenais saturs */
         .container {
             max-width: 1000px;
             width: 100%;
@@ -53,27 +64,68 @@
             border-radius: 28px;
             padding: 40px;
             border: 1px solid var(--border-color);
+        }
+
+        .header-section { text-align: center; margin-bottom: 40px; }
+        h1 { color: var(--main-green); font-size: 2.5rem; text-transform: uppercase; margin: 0; }
+        .subtitle { color: #666; margin-top: 10px; }
+
+        /* Produktu režģis */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: #161616;
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
             text-align: center;
         }
 
-        h1 { color: var(--main-green); text-transform: uppercase; margin-bottom: 30px; }
+        .product-card:hover { border-color: var(--main-green); transform: translateY(-5px); }
 
-        /* Šeit būs tavs produktu režģis */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
+        .img-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #222;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-weight: bold;
+            background-size: cover;
+            background-position: center;
         }
 
-        .item {
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 20px;
-            border: 1px solid #222;
+        .product-title { font-size: 1.2rem; font-weight: 700; margin: 10px 0; }
+        .price { color: var(--main-green); font-size: 1.3rem; font-weight: 800; margin-bottom: 20px; }
+
+        .wa-order-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--wa-green);
+            color: white;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 700;
+            transition: 0.3s;
         }
 
-        .item img { width: 100%; border-radius: 12px; margin-bottom: 10px; }
+        .wa-order-btn:hover { background: #20ba5a; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); }
+
+        @media (max-width: 600px) {
+            .nav-bar { flex-direction: column; gap: 15px; }
+            h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
@@ -82,22 +134,34 @@
     <div style="font-weight: 800; font-size: 1.2rem; color: var(--main-green);">PRINTASAUR</div>
     <div class="nav-links">
         <a href="index.html" class="nav-btn">Idea Lab</a>
-        <a href="#" class="nav-btn active">Kolekcija</a>
+        <a href="kolekcija.html" class="nav-btn active">Kolekcija</a>
+        <a href="https://wa.me/37129629421?text=Sveiki!%20Vēlos%20uzdot%20jautājumu." class="nav-btn nav-wa" target="_blank">Saziņa</a>
     </div>
 </div>
 
 <div class="container">
-    <h1>Mūsu Piedāvājums</h1>
-    <p style="color: #999;">Šeit drīzumā varēsi apskatīt un pasūtīt labākos Printasaur modeļus.</p>
+    <div class="header-section">
+        <h1>Kolekcija</h1>
+        <p class="subtitle">Izvēlies savu mīļāko dizainu un pasūti caur WhatsApp</p>
+    </div>
     
     <div class="grid">
-        <div class="item">
-            <div style="height: 150px; background: #333; border-radius: 12px; display: flex; align-items: center; justify-content: center;">Bilde 1</div>
-            <p>Dino Piekariņš</p>
+        <div class="product-card">
+            <div class="img-placeholder" style="background-image: url('logo.jpg');"></div>
+            <div class="product-title">Dino Piekariņš</div>
+            <div class="price">5.00 €</div>
+            <a href="https://wa.me/37129629421?text=Sveiki!%20Vēlos%20pasūtīt%20Dino%20piekariņu." class="wa-order-btn" target="_blank">
+                Pasūtīt caur WhatsApp
+            </a>
         </div>
-        <div class="item">
-            <div style="height: 150px; background: #333; border-radius: 12px; display: flex; align-items: center; justify-content: center;">Bilde 2</div>
-            <p>CS Specprojekts</p>
+
+        <div class="product-card">
+            <div class="img-placeholder">NAV BILDES</div>
+            <div class="product-title">Pielāgots Dizains</div>
+            <div class="price">No 7.00 €</div>
+            <a href="https://wa.me/37129629421?text=Sveiki!%20Man%20ir%20specifiska%20ideja%20pasūtījumam." class="wa-order-btn" target="_blank">
+                Jautāt par cenu
+            </a>
         </div>
     </div>
 </div>
