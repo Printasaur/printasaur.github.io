@@ -3,48 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Printasaur | Idea Lab</title>
+    <title>Printasaur | Idea Lab 🦖</title>
     <style>
-        :root { --main-green: #9ACD32; --dark-bg: #0d0d0d; --card-bg: #161616; }
+        :root { 
+            --main-green: #9ACD32; 
+            --dark-bg: #0a0a0a; 
+            --card-bg: #111111; 
+            --border-color: #222;
+        }
         
         body { 
             background-color: var(--dark-bg); 
             color: white; 
-            font-family: 'Inter', sans-serif; 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             margin: 0; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             min-height: 100vh; 
+            padding: 20px;
         }
 
         .dashboard { 
             display: grid; 
-            grid-template-columns: 1fr 1.5fr; 
+            grid-template-columns: 1fr 1.4fr; 
             max-width: 1000px; 
-            width: 95%; 
+            width: 100%; 
             background: var(--card-bg); 
-            border-radius: 24px; 
+            border-radius: 28px; 
             overflow: hidden; 
-            border: 1px solid #222;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+            box-shadow: 0 40px 100px rgba(0,0,0,0.7);
         }
 
-        /* Kreisā puse (Info) */
-        .sidebar { padding: 50px; border-right: 1px solid #222; background: linear-gradient(180deg, #161616 0%, #0d0d0d 100%); }
-        .logo { width: 120px; border-radius: 50%; border: 2px solid var(--main-green); margin-bottom: 30px; }
-        h1 { color: var(--main-green); font-size: 2.5rem; margin: 0; line-height: 1.1; }
-        .tagline { color: #666; font-size: 0.9rem; margin-top: 10px; text-transform: uppercase; letter-spacing: 2px; }
-        .description { margin-top: 40px; color: #bbb; line-height: 1.6; font-size: 1.1rem; }
+        /* Kreisā puse - Zīmols */
+        .sidebar { 
+            padding: 60px 40px; 
+            border-right: 1px solid var(--border-color); 
+            background: linear-gradient(180deg, #161616 0%, #0a0a0a 100%); 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-        /* Labā puse (Forma) */
-        .main-content { padding: 40px; background: #111; position: relative; }
-        
-        /* Mobile responsive */
-        @media (max-width: 800px) {
+        .logo { 
+            width: 100px; 
+            height: 100px;
+            border-radius: 50%; 
+            border: 2px solid var(--main-green); 
+            padding: 5px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(154, 205, 50, 0.2);
+        }
+
+        h1 { 
+            color: var(--main-green); 
+            font-size: 2.4rem; 
+            margin: 0; 
+            line-height: 1; 
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .tagline { 
+            color: #555; 
+            font-size: 0.8rem; 
+            margin-top: 12px; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-weight: 600;
+        }
+
+        .description { 
+            margin-top: 40px; 
+            color: #999; 
+            line-height: 1.6; 
+            font-size: 1.05rem; 
+        }
+
+        .highlight { 
+            color: #fff; 
+            font-weight: 600; 
+        }
+
+        /* Labā puse - Anketa */
+        .main-content { 
+            background: #0d0d0d; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 500px;
+        }
+
+        /* Mobilā versija */
+        @media (max-width: 850px) {
             .dashboard { grid-template-columns: 1fr; }
-            .sidebar { padding: 30px; text-align: center; border-right: none; border-bottom: 1px solid #222; }
+            .sidebar { 
+                padding: 40px 30px; 
+                text-align: center; 
+                border-right: none; 
+                border-bottom: 1px solid var(--border-color); 
+                align-items: center;
+            }
             .description { margin-top: 20px; }
+            body { padding: 10px; }
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            font-size: 0.7rem;
+            color: #333;
+            letter-spacing: 1px;
         }
     </style>
 </head>
@@ -55,18 +125,31 @@
         <img src="logo.jpg" class="logo" alt="Printasaur">
         <h1>PRINTASAUR<br>IDEA LAB</h1>
         <div class="tagline">Bambu Lab P1S Station</div>
+        
         <p class="description">
-            Testējam jaunus dizainus! Kādu piekariņu mums vajadzētu izprintēt nākamo? <br><br>
-            <strong>Uzraksti savu domu un skaties, kā tā atdzīvojas veikalā.</strong>
+            Testējam jaunus dizainus! <span class="highlight">Kādu piekariņu mums vajadzētu izprintēt nākamo?</span> 
+            <br><br>
+            Iesaki savu ideju un skaties, kā tā atdzīvojas mūsu veikala stendā.
         </p>
     </div>
 
     <div class="main-content">
-        <iframe data-tally-src="https://tally.so/embed/RGRaL4?hideTitle=1&transparentBackground=1&dynamicHeight=1" 
-                loading="lazy" width="100%" height="550" frameborder="0"></iframe>
+        <iframe 
+            data-tally-src="https://tally.so/embed/RGRaL4?hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+            loading="lazy" 
+            width="100%" 
+            height="550" 
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0" 
+            title="Printasaur Suggestion Form">
+        </iframe>
     </div>
 </div>
 
-<script async src="https://tally.so/Widgets/embed.js"></script>
+<script>
+    var d=document,w="https://tally.so/Widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]'))v();else{var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+</script>
+
 </body>
 </html>
