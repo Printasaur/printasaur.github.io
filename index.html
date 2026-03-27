@@ -15,15 +15,56 @@
         body { 
             background-color: var(--dark-bg); 
             color: white; 
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            font-family: 'Inter', sans-serif; 
             margin: 0; 
             display: flex; 
+            flex-direction: column;
             align-items: center; 
-            justify-content: center; 
             min-height: 100vh; 
             padding: 20px;
         }
 
+        /* Navigācijas josla augšā */
+        .nav-bar {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-btn {
+            background: #1a1a1a;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: var(--main-green);
+            color: black;
+            border-color: var(--main-green);
+        }
+
+        .nav-btn.active {
+            border-color: var(--main-green);
+            color: var(--main-green);
+            background: rgba(154, 205, 50, 0.1);
+        }
+
+        /* Galvenais Dashboard rāmis */
         .dashboard { 
             display: grid; 
             grid-template-columns: 1fr 1.4fr; 
@@ -36,120 +77,47 @@
             box-shadow: 0 40px 100px rgba(0,0,0,0.7);
         }
 
-        /* Kreisā puse - Zīmols */
-        .sidebar { 
-            padding: 60px 40px; 
-            border-right: 1px solid var(--border-color); 
-            background: linear-gradient(180deg, #161616 0%, #0a0a0a 100%); 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+        .sidebar { padding: 60px 40px; border-right: 1px solid var(--border-color); background: linear-gradient(180deg, #161616 0%, #0a0a0a 100%); }
+        .logo { width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--main-green); padding: 5px; margin-bottom: 20px; }
+        h1 { color: var(--main-green); font-size: 2.2rem; margin: 0; line-height: 1; font-weight: 800; }
+        .tagline { color: #555; font-size: 0.75rem; margin-top: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        .description { margin-top: 30px; color: #999; line-height: 1.6; font-size: 1rem; }
+        .main-content { background: #0d0d0d; display: flex; align-items: center; justify-content: center; }
 
-        .logo { 
-            width: 100px; 
-            height: 100px;
-            border-radius: 50%; 
-            border: 2px solid var(--main-green); 
-            padding: 5px;
-            margin-bottom: 30px;
-            box-shadow: 0 0 20px rgba(154, 205, 50, 0.2);
-        }
-
-        h1 { 
-            color: var(--main-green); 
-            font-size: 2.4rem; 
-            margin: 0; 
-            line-height: 1; 
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .tagline { 
-            color: #555; 
-            font-size: 0.8rem; 
-            margin-top: 12px; 
-            text-transform: uppercase; 
-            letter-spacing: 3px; 
-            font-weight: 600;
-        }
-
-        .description { 
-            margin-top: 40px; 
-            color: #999; 
-            line-height: 1.6; 
-            font-size: 1.05rem; 
-        }
-
-        .highlight { 
-            color: #fff; 
-            font-weight: 600; 
-        }
-
-        /* Labā puse - Anketa */
-        .main-content { 
-            background: #0d0d0d; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 500px;
-        }
-
-        /* Mobilā versija */
         @media (max-width: 850px) {
             .dashboard { grid-template-columns: 1fr; }
-            .sidebar { 
-                padding: 40px 30px; 
-                text-align: center; 
-                border-right: none; 
-                border-bottom: 1px solid var(--border-color); 
-                align-items: center;
-            }
-            .description { margin-top: 20px; }
-            body { padding: 10px; }
-        }
-
-        footer {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.7rem;
-            color: #333;
-            letter-spacing: 1px;
+            .sidebar { padding: 40px 30px; text-align: center; border-right: none; border-bottom: 1px solid var(--border-color); align-items: center; }
+            .nav-bar { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
 <body>
 
+<div class="nav-bar">
+    <div style="font-weight: 800; font-size: 1.2rem; color: var(--main-green);">PRINTASAUR</div>
+    <div class="nav-links">
+        <a href="#" class="nav-btn active">Idea Lab</a>
+        <a href="https://tava-saite.lv/kolekcija" class="nav-btn">Kolekcija</a>
+    </div>
+</div>
+
 <div class="dashboard">
     <div class="sidebar">
         <img src="logo.jpg" class="logo" alt="Printasaur">
-        <h1>PRINTASAUR<br>IDEA LAB</h1>
+        <h1>IDEA<br>LAB</h1>
         <div class="tagline">Bambu Lab P1S Station</div>
-        
         <p class="description">
-            Testējam jaunus dizainus! <span class="highlight">Kādu piekariņu mums vajadzētu izprintēt nākamo?</span> 
-            <br><br>
+            Testējam jaunus dizainus! <br><br>
             Iesaki savu ideju un skaties, kā tā atdzīvojas mūsu veikala stendā.
         </p>
     </div>
 
     <div class="main-content">
-        <iframe 
-            data-tally-src="https://tally.so/embed/RGRaL4?hideTitle=1&transparentBackground=1&dynamicHeight=1" 
-            loading="lazy" 
-            width="100%" 
-            height="550" 
-            frameborder="0" 
-            marginheight="0" 
-            marginwidth="0" 
-            title="Printasaur Suggestion Form">
-        </iframe>
+        <iframe data-tally-src="https://tally.so/embed/RGRaL4?hideTitle=1&transparentBackground=1&dynamicHeight=1" 
+                loading="lazy" width="100%" height="550" frameborder="0"></iframe>
     </div>
 </div>
 
-<script>
-    var d=document,w="https://tally.so/Widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]'))v();else{var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
-</script>
-
+<script async src="https://tally.so/Widgets/embed.js"></script>
 </body>
 </html>
