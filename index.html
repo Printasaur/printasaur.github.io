@@ -1,27 +1,272 @@
-/* Uzlabotā un responsīvā navigācija mobilajiem ekrāniem */
-@media (max-width: 850px) {
-    .nav-bar { 
-        flex-direction: column; 
-        gap: 20px; 
-        text-align: center; 
-    }
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Printasaur | Idea Lab 🦖</title>
+    <!-- Importējam moderno Inter fontu no Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     
-    .nav-links { 
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Izveido perfektu 2x2 režģi */
-        gap: 10px; 
-        width: 100%;
-        box-sizing: border-box;
-    }
+    <style>
+        :root { 
+            --main-green: #9ACD32; 
+            --dark-bg: #070707; 
+            --card-bg: #121212; 
+            --border-color: #222;
+            --glow-color: rgba(154, 205, 50, 0.25);
+            --whatsapp-green: #25D366;
+        }
+        
+        body { 
+            background-color: var(--dark-bg); 
+            color: #f5f5f5; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            display: flex; 
+            flex-direction: column;
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 20px;
+            box-sizing: border-box;
+        }
 
-    .nav-btn {
-        padding: 12px 10px;
-        font-size: 0.8rem; /* Nedaudz mazāks teksts, lai viss ietilptu */
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 45px; /* Lielisks izmērs, lai ērti uzspiestu ar pirkstu */
-        border-radius: 10px;
-    }
-}
+        .nav-bar {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 15px 0;
+        }
+
+        .brand-name {
+            font-weight: 800; 
+            font-size: 1.4rem; 
+            color: var(--main-green);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(154, 205, 50, 0.2);
+        }
+
+        .nav-links { 
+            display: flex; 
+            gap: 12px; 
+        }
+
+        .nav-btn {
+            background: #161616;
+            color: #b3b3b3;
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-btn:hover {
+            color: white;
+            border-color: #444;
+            transform: translateY(-2px);
+            background: #1d1d1d;
+        }
+
+        .nav-btn.active { 
+            border-color: var(--main-green); 
+            color: var(--main-green); 
+            background: rgba(154, 205, 50, 0.08); 
+            box-shadow: 0 0 15px var(--glow-color);
+        }
+
+        .dashboard { 
+            display: grid; 
+            grid-template-columns: 1fr 1.4fr; 
+            max-width: 1000px; 
+            width: 100%; 
+            background: var(--card-bg); 
+            border-radius: 28px; 
+            overflow: hidden; 
+            border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar { 
+            padding: 60px 40px; 
+            border-right: 1px solid var(--border-color); 
+            background: linear-gradient(180deg, #181818 0%, #0d0d0d 100%); 
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .logo { 
+            width: 90px; 
+            height: 90px; 
+            border-radius: 50%; 
+            border: 2px solid var(--main-green); 
+            padding: 5px; 
+            background: #111;
+            transition: transform 0.4s ease;
+            box-shadow: 0 0 20px var(--glow-color);
+        }
+
+        .logo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        h1 { 
+            color: var(--main-green); 
+            font-size: 2.4rem; 
+            margin: 0; 
+            font-weight: 800; 
+            letter-spacing: -0.5px;
+        }
+
+        .description { 
+            margin-top: 25px; 
+            color: #a0a0a0; 
+            line-height: 1.7; 
+            font-size: 1rem;
+            margin-bottom: 30px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--whatsapp-green);
+            color: white;
+            text-decoration: none;
+            padding: 14px 24px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.15);
+            width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(37, 211, 102, 0.3);
+            filter: brightness(1.1);
+        }
+
+        .whatsapp-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .main-content { 
+            background: #0d0d0d; 
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 100%;
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsīvais dizains mobilajiem ekrāniem */
+        @media (max-width: 850px) {
+            .dashboard { grid-template-columns: 1fr; }
+            .sidebar { 
+                padding: 40px; 
+                text-align: center; 
+                align-items: center;
+                border-right: none; 
+                border-bottom: 1px solid var(--border-color); 
+            }
+            .nav-bar {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+            .nav-links { 
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* Perfekts 2x2 režģis */
+                gap: 10px; 
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .nav-btn {
+                padding: 12px 10px;
+                font-size: 0.8rem;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 45px; /* Ērtākai uzspiešanai */
+                border-radius: 10px;
+            }
+            .whatsapp-btn {
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="nav-bar">
+    <div class="brand-name">PRINTASAUR</div>
+    <div class="nav-links">
+        <a href="index.html" class="nav-btn active">Idea Lab</a>
+        <a href="darbi.html" class="nav-btn">Mūsu darbi</a>
+        <a href="Biežāk uzdotie jautājumi.html" class="nav-btn">Jautājumi & Par mums</a>
+        <a href="kolekcija.html" class="nav-btn">Kolekcija</a>
+    </div>
+</div>
+
+<div class="dashboard">
+    <div class="sidebar">
+        <div class="logo-container">
+            <img src="logo.jpg" class="logo" alt="Printasaur">
+        </div>
+        <h1>IDEA LAB</h1>
+        <p class="description">
+            Testējam jaunus dizainus! Iesaki savu ideju un skaties, kā tā atdzīvojas mūsu veikalā.
+        </p>
+        
+        <!-- WhatsApp ātrās saziņas poga -->
+        <a href="https://wa.me/37129629421?text=Sveiki!%20Es%20v%C4%93los%20pas%C5%ABt%C4%ABt%20Printasaur%20piekari%C5%86u." 
+           class="whatsapp-btn" 
+           target="_blank">
+            <svg viewBox="0 0 24 24">
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.63-1.019-5.101-2.871-6.957C16.608 1.928 14.136.902 11.517.902c-5.44 0-9.866 4.42-9.869 9.866-.001 1.761.472 3.483 1.371 5.017l-.991 3.616 3.708-.973zm11.332-6.837c-.31-.156-1.84-.908-2.127-1.01-.287-.104-.497-.156-.707.156-.21.312-.811 1.01-.994 1.221-.183.21-.365.237-.676.081-.312-.156-1.316-.485-2.507-1.548-.927-.827-1.553-1.849-1.735-2.16-.182-.312-.02-.48.137-.635.141-.14.312-.364.468-.547.156-.182.208-.312.312-.52.104-.21.052-.39-.026-.547-.078-.156-.707-1.703-.969-2.331-.255-.614-.514-.53-.707-.54-.183-.01-.393-.01-.601-.01-.208 0-.547.078-.833.39-.286.312-1.094 1.067-1.094 2.602 0 1.536 1.118 3.02 1.274 3.229.156.21 2.197 3.355 5.323 4.707.744.321 1.324.513 1.776.657.748.238 1.43.204 1.969.124.6-.09 1.84-.753 2.101-1.445.262-.693.262-1.289.183-1.414-.078-.125-.286-.208-.597-.364z"/>
+            </svg>
+            Sazināties & Pasūtīt
+        </a>
+    </div>
+
+    <div class="main-content">
+        <div class="iframe-container">
+            <iframe src="https://tally.so/embed/RGRaL4?hideTitle=1&transparentBackground=1" 
+                    style="width: 100%; height: 550px; border: none;"
+                    title="Printasaur Idea Form">
+            </iframe>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
