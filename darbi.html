@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Printasaur | Mūsu darbi 🦖</title>
+    <!-- Importējam moderno Inter fontu no Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root { 
             --main-green: #9ACD32; 
@@ -23,6 +28,7 @@
             align-items: center; 
             min-height: 100vh; 
             padding: 20px;
+            box-sizing: border-box;
         }
 
         /* Navigācijas josla */
@@ -145,8 +151,33 @@
             border: 1px solid rgba(154, 205, 50, 0.2);
         }
 
+        /* Uzlabotā un responsīvā navigācija mobilajiem ekrāniem */
         @media (max-width: 850px) {
-            .nav-bar { flex-direction: column; gap: 15px; text-align: center; }
+            .nav-bar { 
+                flex-direction: column; 
+                gap: 20px; 
+                text-align: center; 
+            }
+            
+            .nav-links { 
+                display: grid;
+                grid-template-columns: repeat(2, 1fr); /* Perfekts 2x2 režģis */
+                gap: 10px; 
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .nav-btn {
+                padding: 12px 10px;
+                font-size: 0.8rem;
+                text-align: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 45px; /* Ērtākai uzspiešanai */
+                border-radius: 10px;
+            }
+
             .container { padding: 30px 20px; }
             h1 { font-size: 2rem; }
         }
