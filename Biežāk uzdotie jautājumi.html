@@ -16,7 +16,6 @@
             --card-bg: #121212; 
             --border-color: #222;
             --glow-color: rgba(154, 205, 50, 0.25);
-            --whatsapp-green: #25D366;
         }
         
         body { 
@@ -84,7 +83,7 @@
 
         .dashboard { 
             display: grid; 
-            grid-template-columns: 1fr 1.4fr; 
+            grid-template-columns: 1.1fr 1.3fr; 
             max-width: 1000px; 
             width: 100%; 
             background: var(--card-bg); 
@@ -95,7 +94,7 @@
         }
 
         .sidebar { 
-            padding: 60px 40px; 
+            padding: 40px; 
             border-right: 1px solid var(--border-color); 
             background: linear-gradient(180deg, #181818 0%, #0d0d0d 100%); 
             display: flex;
@@ -105,7 +104,8 @@
 
         .logo-container {
             position: relative;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            align-self: center;
         }
 
         .logo { 
@@ -125,50 +125,58 @@
 
         h1 { 
             color: var(--main-green); 
-            font-size: 2.2rem; 
-            margin: 0; 
+            font-size: 1.8rem; 
+            margin: 0 0 15px 0; 
             font-weight: 800; 
             letter-spacing: -0.5px;
             line-height: 1.1;
+            text-align: left;
+            width: 100%;
         }
 
-        .description { 
-            margin-top: 25px; 
-            color: #a0a0a0; 
-            line-height: 1.7; 
-            font-size: 1rem;
-            margin-bottom: 30px;
+        .about-text {
+            color: #b3b3b3;
+            line-height: 1.6;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
         }
 
-        .whatsapp-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: var(--whatsapp-green);
-            color: white;
-            text-decoration: none;
-            padding: 14px 24px;
-            border-radius: 14px;
+        .services-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .service-item {
+            border-left: 2px solid var(--main-green);
+            padding-left: 12px;
+        }
+
+        .service-title {
+            color: #ffffff;
             font-weight: 700;
             font-size: 0.95rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.15);
-            width: 100%;
-            box-sizing: border-box;
-            text-align: center;
+            margin-bottom: 4px;
+            display: block;
         }
 
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(37, 211, 102, 0.3);
-            filter: brightness(1.1);
+        .service-desc {
+            color: #a0a0a0;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            margin: 0;
         }
 
-        .whatsapp-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
+        .sidebar-footer {
+            margin-top: auto;
+            padding-top: 25px;
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--main-green);
+            line-height: 1.4;
         }
 
         .main-content { 
@@ -176,41 +184,21 @@
             padding: 40px;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 20px;
             overflow-y: auto;
-            max-height: 680px;
+            max-height: 700px;
         }
 
         .section-title {
             color: var(--main-green);
             font-size: 1.6rem;
             font-weight: 800;
-            margin: 0 0 20px 0;
+            margin: 0 0 10px 0;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             border-bottom: 2px solid rgba(154, 205, 50, 0.15);
             padding-bottom: 10px;
             width: 100%;
-        }
-
-        /* Par mums bloka stili */
-        .about-section {
-            color: #b3b3b3;
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .about-section p {
-            margin: 0 0 15px 0;
-        }
-
-        .about-section p:last-child {
-            margin-bottom: 0;
-        }
-
-        .about-highlight {
-            color: #ffffff;
-            font-weight: 600;
         }
 
         /* BUJ bloka stili */
@@ -279,19 +267,19 @@
         @media (max-width: 850px) {
             .dashboard { grid-template-columns: 1fr; }
             .sidebar { 
-                padding: 40px; 
-                text-align: center; 
-                align-items: center;
+                padding: 30px; 
+                text-align: left; 
+                align-items: flex-start;
                 border-right: none; 
                 border-bottom: 1px solid var(--border-color); 
+            }
+            .logo-container {
+                align-self: center;
             }
             .nav-bar {
                 flex-direction: column;
                 gap: 15px;
                 padding: 10px;
-            }
-            .whatsapp-btn {
-                max-width: 320px;
             }
             .main-content {
                 padding: 30px 20px;
@@ -307,50 +295,49 @@
     <div class="nav-links">
         <a href="index.html" class="nav-btn">Idea Lab</a>
         <a href="darbi.html" class="nav-btn">Mūsu darbi</a>
-        <!-- Aktīvā poga "Jautājumi & Par mums" -->
         <a href="Biežāk uzdotie jautājumi.html" class="nav-btn active">Jautājumi & Par mums</a>
         <a href="kolekcija.html" class="nav-btn">Kolekcija</a>
     </div>
 </div>
 
 <div class="dashboard">
+    <!-- KREISĀ PUSE: PAR MUMS VIZĪTKARTE -->
     <div class="sidebar">
         <div class="logo-container">
             <img src="logo.jpg" class="logo" alt="Printasaur">
         </div>
-        <h1>Mūsu stāsts & FAQ</h1>
-        <p class="description">
-            Uzzini vairāk par to, kā top Printasaur projekti, un atrodi atbildes uz biežāk uzdotajiem jautājumiem.
-        </p>
         
-        <!-- WhatsApp ātrās saziņas poga -->
-        <a href="https://wa.me/37129629421?text=Sveiki!%20Es%20v%C4%93los%20pas%C5%ABt%C4%ABt%20Printasaur%20piekari%C5%86u." 
-           class="whatsapp-btn" 
-           target="_blank">
-            <svg viewBox="0 0 24 24">
-                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.457L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.42 9.863-9.864.001-2.63-1.019-5.101-2.871-6.957C16.608 1.928 14.136.902 11.517.902c-5.44 0-9.866 4.42-9.869 9.866-.001 1.761.472 3.483 1.371 5.017l-.991 3.616 3.708-.973zm11.332-6.837c-.31-.156-1.84-.908-2.127-1.01-.287-.104-.497-.156-.707.156-.21.312-.811 1.01-.994 1.221-.183.21-.365.237-.676.081-.312-.156-1.316-.485-2.507-1.548-.927-.827-1.553-1.849-1.735-2.16-.182-.312-.02-.48.137-.635.141-.14.312-.364.468-.547.156-.182.208-.312.312-.52.104-.21.052-.39-.026-.547-.078-.156-.707-1.703-.969-2.331-.255-.614-.514-.53-.707-.54-.183-.01-.393-.01-.601-.01-.208 0-.547.078-.833.39-.286.312-1.094 1.067-1.094 2.602 0 1.536 1.118 3.02 1.274 3.229.156.21 2.197 3.355 5.323 4.707.744.321 1.324.513 1.776.657.748.238 1.43.204 1.969.124.6-.09 1.84-.753 2.101-1.445.262-.693.262-1.289.183-1.414-.078-.125-.286-.208-.597-.364z"/>
-            </svg>
-            Sazināties & Pasūtīt
-        </a>
-    </div>
-
-    <div class="main-content">
+        <h1>Par mums</h1>
         
-        <!-- PAR MUMS SADAĻA -->
-        <div class="about-section">
-            <div class="section-title">Par mums</div>
-            <p>
-                Sveiks! Esam <span class="about-highlight">Printasaur</span> – radoša 3D modelēšanas un drukas darbnīca, kurā idejas pārtop taustāmos un kvalitatīvos produktos. Mūsu stāsts sākās ar vēlmi radīt unikālus, izturīgus un funkcionālus aksesuārus, kurus grūti atrast parastos veikalos.
-            </p>
-            <p>
-                Mēs ne tikai izgatavojam gatavus dizainus, bet arī <span class="about-highlight">izstrādājam individuālus risinājumus no nulles</span>. Tas ietver pilnu ciklu: no skices vai idejas tavā galvā, līdz precīzam 3D modelim datorā un finālā – gatavam fiziskam produktam.
-            </p>
-            <p>
-                Katrs mūsu darbs tiek drukāts uz augstas precizitātes iekārtām, īpašu uzmanību pievēršot detaļām, materiālu saderībai un izturībai ikdienas lietošanā. Neatkarīgi no tā, vai tas ir personalizēts auto piekariņš, izstāžu stends vai specifiska tehniska detaļa – mēs parūpēsimies, lai rezultāts būtu izcils.
-            </p>
+        <div class="about-text">
+            Sveiks! Esam <strong>Printasaur</strong> – 3D drukas, skenēšanas un modelēšanas darbnīca, kurā idejas pārtop gatavos fiziskos produktos. Mūsu mērķis ir vienkāršs: atrisināt tavas tehniskās vai radošās vajadzības ātri un kvalitatīvi.
         </div>
 
-        <!-- BUJ SADAĻA -->
+        <div class="services-list">
+            <div class="service-item">
+                <span class="service-title">3D Skenēšana</span>
+                <p class="service-desc">Pārnesam fiziskus objektus digitālajā vidē. Ideāli piemērots, ja vajag nokopēt, atjaunot vai pielāgot retas, salūzušas vai grūti atrodamas detaļas (piemēram, auto salonam vai virsbūvei).</p>
+            </div>
+            
+            <div class="service-item">
+                <span class="service-title">CAD Modelēšana</span>
+                <p class="service-desc">No vienkāršas skices uz papīra vai idejas tavā galvā izstrādājam precīzu 3D modeli datorā.</p>
+            </div>
+            
+            <div class="service-item">
+                <span class="service-title">3D Drukāšana</span>
+                <p class="service-desc">Realizējam gatavo modeli materiālā, kas vislabāk atbilst mērķim. Neatkarīgi no tā, vai vajadzīga vizuāli perfekta detaļa, elastīgs gumijas elements vai karstumizturīgs un saules drošs (ASA/PETG) stiprinājums mašīnai.</p>
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            No idejas līdz gatavam produktam – mēs parūpēsimies, lai rezultāts kalpotu ilgi un izskatītos izcili!
+        </div>
+    </div>
+
+    <!-- LABĀ PUSE: BIEŽĀK UZDOTIE JAUTĀJUMI -->
+    <div class="main-content">
+        
         <div class="faq-section">
             <div class="section-title">Biežāk uzdotie jautājumi</div>
             <div class="faq-container">
@@ -403,7 +390,7 @@
                     <div class="faq-question">Vai var pasūtīt pilnīgi individuālu dizainu?</div>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Jā, prostam! Ja tev ir sava ideja, skice vai gatavs 3D modelis (.stl formātā), dodies uz sadaļu "Kolekcija" un spied uz "Individuāls pasūtījums" vai vienkārši uzraksti mums WhatsApp, atsūtot savu vēlmi.
+                            Jā, protams! Ja tev ir sava ideja, skice vai gatavs 3D modelis (.stl formātā), dodies uz sadaļu "Kolekcija" un spied uz "Individuāls pasūtījums" vai vienkārši uzraksti mums WhatsApp, atsūtot savu vēlmi.
                         </div>
                     </div>
                 </div>
