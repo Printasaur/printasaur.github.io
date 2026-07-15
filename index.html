@@ -4,17 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Printasaur | Idea Lab 🦖</title>
+    <!-- Importējam moderno Inter fontu no Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <style>
         :root { 
             --main-green: #9ACD32; 
-            --dark-bg: #0a0a0a; 
-            --card-bg: #111111; 
+            --dark-bg: #070707; 
+            --card-bg: #121212; 
             --border-color: #222;
+            --glow-color: rgba(154, 205, 50, 0.25);
         }
         
         body { 
             background-color: var(--dark-bg); 
-            color: white; 
+            color: #f5f5f5; 
             font-family: 'Inter', sans-serif; 
             margin: 0; 
             display: flex; 
@@ -22,6 +28,7 @@
             align-items: center; 
             min-height: 100vh; 
             padding: 20px;
+            box-sizing: border-box;
         }
 
         .nav-bar {
@@ -30,25 +37,49 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding: 10px 0;
+            margin-bottom: 30px;
+            padding: 15px 0;
         }
 
-        .nav-links { display: flex; gap: 15px; }
+        .brand-name {
+            font-weight: 800; 
+            font-size: 1.4rem; 
+            color: var(--main-green);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(154, 205, 50, 0.2);
+        }
+
+        .nav-links { 
+            display: flex; 
+            gap: 15px; 
+        }
 
         .nav-btn {
-            background: #1a1a1a;
-            color: white;
+            background: #161616;
+            color: #b3b3b3;
             text-decoration: none;
-            padding: 10px 20px;
+            padding: 10px 22px;
             border-radius: 12px;
             font-size: 0.9rem;
             font-weight: 600;
             border: 1px solid var(--border-color);
-            transition: 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .nav-btn.active { border-color: var(--main-green); color: var(--main-green); background: rgba(154, 205, 50, 0.1); }
+        .nav-btn:hover {
+            color: white;
+            border-color: #444;
+            transform: translateY(-2px);
+            background: #1d1d1d;
+        }
+
+        .nav-btn.active { 
+            border-color: var(--main-green); 
+            color: var(--main-green); 
+            background: rgba(154, 205, 50, 0.08); 
+            box-shadow: 0 0 15px var(--glow-color);
+        }
 
         .dashboard { 
             display: grid; 
@@ -59,43 +90,92 @@
             border-radius: 28px; 
             overflow: hidden; 
             border: 1px solid var(--border-color);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
         }
 
         .sidebar { 
             padding: 60px 40px; 
             border-right: 1px solid var(--border-color); 
-            background: linear-gradient(180deg, #161616 0%, #0a0a0a 100%); 
+            background: linear-gradient(180deg, #181818 0%, #0d0d0d 100%); 
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        .logo { width: 90px; height: 90px; border-radius: 50%; border: 2px solid var(--main-green); padding: 5px; margin-bottom: 25px; }
-        h1 { color: var(--main-green); font-size: 2.2rem; margin: 0; font-weight: 800; }
-        .description { margin-top: 30px; color: #999; line-height: 1.6; }
+        .logo-container {
+            position: relative;
+            margin-bottom: 25px;
+        }
+
+        .logo { 
+            width: 90px; 
+            height: 90px; 
+            border-radius: 50%; 
+            border: 2px solid var(--main-green); 
+            padding: 5px; 
+            background: #111;
+            transition: transform 0.4s ease;
+            box-shadow: 0 0 20px var(--glow-color);
+        }
+
+        .logo:hover {
+            transform: rotate(5deg) scale(1.05);
+        }
+
+        h1 { 
+            color: var(--main-green); 
+            font-size: 2.4rem; 
+            margin: 0; 
+            font-weight: 800; 
+            letter-spacing: -0.5px;
+        }
+
+        .description { 
+            margin-top: 25px; 
+            color: #a0a0a0; 
+            line-height: 1.7; 
+            font-size: 1rem;
+        }
 
         .main-content { 
             background: #0d0d0d; 
-            padding: 20px;
+            padding: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* Rezerves poga, ja nekas neielādējas */
-        .fallback-link {
-            color: var(--main-green);
-            text-decoration: underline;
-            cursor: pointer;
+        /* Gluds ielādes efekts iframe saturam */
+        .iframe-container {
+            width: 100%;
+            height: 100%;
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         @media (max-width: 850px) {
             .dashboard { grid-template-columns: 1fr; }
-            .sidebar { padding: 40px; text-align: center; border-right: none; border-bottom: 1px solid var(--border-color); }
+            .sidebar { 
+                padding: 40px; 
+                text-align: center; 
+                align-items: center;
+                border-right: none; 
+                border-bottom: 1px solid var(--border-color); 
+            }
+            .nav-bar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
 <div class="nav-bar">
-    <div style="font-weight: 800; font-size: 1.2rem; color: var(--main-green);">PRINTASAUR</div>
+    <div class="brand-name">PRINTASAUR</div>
     <div class="nav-links">
         <a href="index.html" class="nav-btn active">Idea Lab</a>
         <a href="kolekcija.html" class="nav-btn">Kolekcija</a>
@@ -104,7 +184,9 @@
 
 <div class="dashboard">
     <div class="sidebar">
-        <img src="logo.jpg" class="logo" alt="Printasaur">
+        <div class="logo-container">
+            <img src="logo.jpg" class="logo" alt="Printasaur">
+        </div>
         <h1>IDEA LAB</h1>
         <p class="description">
             Testējam jaunus dizainus! Iesaki savu ideju un skaties, kā tā atdzīvojas mūsu veikalā.
@@ -112,9 +194,12 @@
     </div>
 
     <div class="main-content">
-        <iframe src="https://tally.so/embed/RGRaL4?hideTitle=1&transparentBackground=1" 
-                style="width: 100%; height: 600px; border: none;">
-        </iframe>
+        <div class="iframe-container">
+            <iframe src="https://tally.so/embed/RGRaL4?hideTitle=1&transparentBackground=1" 
+                    style="width: 100%; height: 550px; border: none;"
+                    title="Printasaur Idea Form">
+            </iframe>
+        </div>
     </div>
 </div>
 
